@@ -46,13 +46,9 @@ public class Bullet : MonoBehaviour
         Destroy(effectIns, 5f);
 
         if (explosionRadius > 0f)
-        {
             Explode();
-        }
         else
-        {
             Damage(target);
-        }
 
         Destroy(gameObject);
     }
@@ -63,9 +59,7 @@ public class Bullet : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             if (collider.tag == "Enemy")
-            {
                 Damage(collider.transform);
-            }
         }
     }
 
@@ -74,8 +68,6 @@ public class Bullet : MonoBehaviour
         Enemy e = enemy.GetComponent<Enemy>();
 
         if (e != null)
-        {
             e.TakeDamage(damage);
-        }
     }
 }

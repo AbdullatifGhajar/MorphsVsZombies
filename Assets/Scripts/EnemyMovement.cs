@@ -16,8 +16,11 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+        Vector3 targetDirection = target.position - transform.position;
+        transform.Translate(targetDirection.normalized * enemy.speed * Time.deltaTime, Space.World);
+
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * 7f, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             GetNextWaypoint();

@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 904abb789df87fd488a9dca0ae94746c
+timeCreated: 1438163839
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: chest
+    100002: elbow_IK.L
+    100004: elbow_IK.R
+    100006: f_index.01.L
+    100008: f_index.01.R
+    100010: f_ring.01.L
+    100012: f_ring.01.R
+    100014: foot.L
+    100016: foot.R
+    100018: foot_IK.L
+    100020: foot_IK.R
+    100022: forearm.L
+    100024: forearm.R
+    100026: forearm_IK.L
+    100028: forearm_IK.R
+    100030: hand.L
+    100032: hand.R
+    100034: head
+    100036: hips
+    100038: knee_IK.L
+    100040: knee_IK.R
+    100042: neck
+    100044: palm.01.L
+    100046: palm.01.R
+    100048: palm.03.L
+    100050: palm.03.R
+    100052: ROOT
+    100054: shin.L
+    100056: shin.R
+    100058: shoulder.L
+    100060: shoulder.R
+    100062: spine
+    100064: thigh.L
+    100066: thigh.R
+    100068: thumb.01.L
+    100070: thumb.01.R
+    100072: toe.L
+    100074: toe.R
+    100076: upper_arm.L
+    100078: upper_arm.R
+    100080: zombie
+    100082: //RootNode
+    100084: zombie_armature
+    400000: chest
+    400002: elbow_IK.L
+    400004: elbow_IK.R
+    400006: f_index.01.L
+    400008: f_index.01.R
+    400010: f_ring.01.L
+    400012: f_ring.01.R
+    400014: foot.L
+    400016: foot.R
+    400018: foot_IK.L
+    400020: foot_IK.R
+    400022: forearm.L
+    400024: forearm.R
+    400026: forearm_IK.L
+    400028: forearm_IK.R
+    400030: hand.L
+    400032: hand.R
+    400034: head
+    400036: hips
+    400038: knee_IK.L
+    400040: knee_IK.R
+    400042: neck
+    400044: palm.01.L
+    400046: palm.01.R
+    400048: palm.03.L
+    400050: palm.03.R
+    400052: ROOT
+    400054: shin.L
+    400056: shin.R
+    400058: shoulder.L
+    400060: shoulder.R
+    400062: spine
+    400064: thigh.L
+    400066: thigh.R
+    400068: thumb.01.L
+    400070: thumb.01.R
+    400072: toe.L
+    400074: toe.R
+    400076: upper_arm.L
+    400078: upper_arm.R
+    400080: //RootNode
+    400082: zombie
+    400084: zombie_armature
+    4300000: zombie
+    7400000: zombie_armature|zombie_attack1
+    7400002: zombie_armature|zombie_attack2
+    7400004: zombie_armature|zombie_attack3
+    7400006: zombie_armature|zombie_attack_combo
+    7400008: zombie_armature|zombie_idle
+    7400010: zombie_armature|zombie_tpose
+    7400012: zombie_armature|zombie_walk1
+    7400014: zombie_armature|zombie_walk2
+    9500000: //RootNode
+    13700000: zombie
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
