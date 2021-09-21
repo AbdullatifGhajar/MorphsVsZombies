@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
 
     [Header("Use Bullets (default)")]
     public GameObject bulletPrefab;
+    public AudioClip shootingClip;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
@@ -19,6 +20,8 @@ public class Turret : MonoBehaviour
     public bool useLaser = false;
     public int damageOverTime = 30;
     public float slowAmount = .5f;
+
+    public AudioClip laserClip;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -31,6 +34,8 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        if (useLaser)
+            GetComponent<AudioSource>().loop = true;
     }
 
     void UpdateTarget()
@@ -71,6 +76,8 @@ public class Turret : MonoBehaviour
                     lineRenderer.enabled = false;
                     impactEffect.Stop();
                     impactLight.enabled = false;
+
+                    GetComponent<AudioSource>().Stop();
                 }
             }
 
@@ -114,6 +121,9 @@ public class Turret : MonoBehaviour
             lineRenderer.enabled = true;
             impactEffect.Play();
             impactLight.enabled = true;
+
+            GetComponent<AudioSource>().clip = laserClip;
+            GetComponent<AudioSource>().Play();
         }
 
         lineRenderer.SetPosition(0, transform.position);
@@ -129,8 +139,9 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if (bullet != null)
-            bullet.Seek(target);
+        bullet.Seek(target);
+
+        GetComponent<AudioSource>().PlayOneShot(shootingClip);
     }
 
     // TODO show radius when clicking e.g. with 

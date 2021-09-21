@@ -5,11 +5,14 @@ public class Bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 70f;
-
     public int damage = 50;
 
+    public AudioClip landingClip;
+
     public float explosionRadius = 0f;
+
     public GameObject impactEffect;
+
 
     public void Seek(Transform _target)
     {
@@ -31,6 +34,8 @@ public class Bullet : MonoBehaviour
         if (dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
+            if (landingClip)
+                GetComponent<AudioSource>().PlayOneShot(landingClip);
             return;
         }
 
