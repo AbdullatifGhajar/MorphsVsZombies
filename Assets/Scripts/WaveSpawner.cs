@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -43,8 +44,10 @@ public class WaveSpawner : MonoBehaviour
     {
         PlayerStats.Rounds++;
         Wave wave = waves[waveIndex];
-        EnemiesAlive = wave.count;
 
+        GetComponent<AudioSource>().PlayOneShot(wave.sound);
+        
+        EnemiesAlive = wave.count;
         for (int i = 0; i < wave.count; i++)
         {
             SpawnEnemy(wave.enemy);
