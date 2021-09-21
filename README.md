@@ -6,3 +6,7 @@
 - add sounds for lives
 - add starting/ending sound
 - update main menu
+- add updates for turrets
+- display name of turrets
+- display turret blueprint in hand
+- display feedback when no money
