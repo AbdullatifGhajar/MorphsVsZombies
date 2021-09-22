@@ -10,4 +10,3 @@
 - display name of turrets
 - display turret blueprint in hand
 - display feedback when no money
-- fixate health bar
