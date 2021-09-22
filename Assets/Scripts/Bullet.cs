@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Transform target;
+    private Enemy target;
 
     public float speed = 70f;
     public int damage = 50;
@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactEffect;
 
 
-    public void Seek(Transform _target)
+    public void Seek(Enemy _target)
     {
         target = _target;
     }
@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-        transform.LookAt(target);
+        transform.LookAt(target.position);
 
     }
 
@@ -59,11 +59,11 @@ public class Bullet : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             if (collider.tag == "Enemy")
-                Damage(collider.transform);
+                Damage(collider.GetComponent<Enemy>());
         }
     }
 
-    void Damage(Transform enemy)
+    void Damage(Enemy enemy)
     {
         Enemy e = enemy.GetComponent<Enemy>();
 

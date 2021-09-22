@@ -1,10 +1,8 @@
 using UnityEngine;
-using System.Collections;
 
 public class Turret : MonoBehaviour
 {
-    private Transform target;
-    private Enemy targetEnemy;
+    private Enemy target;
 
     [Header("General")]
 
@@ -27,8 +25,6 @@ public class Turret : MonoBehaviour
     public Light impactLight;
 
     [Header("Unity Setup Fields")]
-
-    public string enemyTag = "Enemy";
     public float turnSpeed = 10f;
 
     void Start()
@@ -40,7 +36,7 @@ public class Turret : MonoBehaviour
 
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
         foreach (GameObject enemy in enemies)
@@ -55,8 +51,7 @@ public class Turret : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<Enemy>();
+            target = nearestEnemy.GetComponent<Enemy>();
         }
         else
         {
@@ -113,8 +108,8 @@ public class Turret : MonoBehaviour
 
     void Laser()
     {
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-        targetEnemy.Slow(slowAmount);
+        target.TakeDamage(damageOverTime * Time.deltaTime);
+        target.Slow(slowAmount);
 
         if (!lineRenderer.enabled)
         {

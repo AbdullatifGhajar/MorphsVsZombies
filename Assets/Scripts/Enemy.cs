@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     private bool isDead = false;
 
+    public Vector3 position { get { return transform.position + new Vector3(0f, 2f, 0f); } }
+
     void Start()
     {
         speed = startSpeed;
