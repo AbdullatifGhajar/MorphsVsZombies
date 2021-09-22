@@ -58,16 +58,16 @@ public class Bullet : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if (collider.tag == "Enemy")
+            print(collider.name);
+            if (collider.tag == "Enemy" ||
+                (collider.transform.parent != null && collider.transform.parent.tag == "Enemy"))
                 Damage(collider.GetComponent<Enemy>());
         }
     }
 
     void Damage(Enemy enemy)
     {
-        Enemy e = enemy.GetComponent<Enemy>();
-
-        if (e != null)
-            e.TakeDamage(damage);
+        if (enemy != null)
+            enemy.TakeDamage(damage);
     }
 }
