@@ -36,7 +36,7 @@ public class BuildManager : MonoBehaviour
         selectedNode = node;
         turretToBuild = null;
 
-        nodeUI.SetTarget(node);
+        nodeUI.ShowOn(node);
     }
 
     public void DeselectNode()

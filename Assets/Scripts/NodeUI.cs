@@ -12,13 +12,13 @@ public class NodeUI : MonoBehaviour
 
     private Node target;
 
-    public void SetTarget(Node node)
+    public void ShowOn(Node node)
     {
         target = node;
 
         transform.position = target.GetBuildPosition();
 	
-        if (!target.isUpgraded)
+        if (!target.turret.isUpgraded)
         {
             upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
             upgradeButton.interactable = true;

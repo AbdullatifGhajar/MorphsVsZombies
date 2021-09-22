@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    public bool isUpgraded = false;
     private Enemy target;
 
     [Header("General")]
@@ -32,6 +33,12 @@ public class Turret : MonoBehaviour
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         if (useLaser)
             GetComponent<AudioSource>().loop = true;
+    }
+
+    public void Upgrade()
+    {
+        isUpgraded = true;
+        Debug.Log("Turret upgraded!");
     }
 
     void UpdateTarget()

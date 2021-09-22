@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class Node : MonoBehaviour
     public Color canBuildColor;
     public Color cantBuildColor;
 
-    public GameObject turret;
+    public Turret turret;
     public TurretBlueprint turretBlueprint;
     public bool isUpgraded = false;
 
@@ -31,17 +30,11 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (turret != null)
-        {
-
+        if (turret)
             buildManager.SelectNode(this);
-            return;
-        }
+        else if (buildManager.aboutToBuild)
+            BuildTurret(buildManager.GetTurretToBuild());
 
-        if (!buildManager.aboutToBuild)
-            return;
-
-        BuildTurret(buildManager.GetTurretToBuild());
     }
 
     void BuildTurret(TurretBlueprint blueprint)
@@ -54,7 +47,7 @@ public class Node : MonoBehaviour
         }
 
         PlayerStats.Money -= blueprint.cost;
-        turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity).GetComponent<Turret>();
         turretBlueprint = blueprint;
 
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
@@ -76,15 +69,7 @@ public class Node : MonoBehaviour
 
         PlayerStats.Money -= turretBlueprint.upgradeCost;
 
-        Destroy(turret);
-        turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
-
-        GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        isUpgraded = true;
-
-        Debug.Log("Turret upgraded!");
+        turret.Upgrade();
     }
 
     public void SellTurret()
@@ -95,26 +80,21 @@ public class Node : MonoBehaviour
         GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
 
-        Destroy(turret);
+        Destroy(turret.gameObject);
         turretBlueprint = null;
     }
 
     bool canBuildOn()
     {
-        return buildManager.aboutToBuild && !turret && buildManager.HasMoney;
-    }
-
-    bool cantBuildOn()
-    {
-        return buildManager.aboutToBuild && (turret || !buildManager.HasMoney);
+        return !turret && buildManager.HasMoney;
     }
 
     void OnMouseEnter()
     {
-        if (canBuildOn())
+        if (buildManager.aboutToBuild && canBuildOn())
             rend.material.color = canBuildColor;
 
-        else if (cantBuildOn())
+        else if (buildManager.aboutToBuild && !canBuildOn())
             rend.material.color = cantBuildColor;
 
         else // just hovering
