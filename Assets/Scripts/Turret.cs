@@ -31,12 +31,15 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        transform.Find("Hat").gameObject.SetActive(false);
         if (useLaser)
             GetComponent<AudioSource>().loop = true;
     }
 
     public void Upgrade()
     {
+        transform.Find("Hat").gameObject.SetActive(true);
+        // TODO upgrade values
         isUpgraded = true;
         Debug.Log("Turret upgraded!");
     }
