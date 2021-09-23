@@ -17,7 +17,7 @@ public class NodeUI : MonoBehaviour
         target = node;
 
         transform.position = target.GetBuildPosition();
-	
+
         if (!target.turret.isUpgraded)
         {
             upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;

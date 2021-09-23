@@ -25,7 +25,8 @@ public class Node : MonoBehaviour
 
     public Vector3 GetBuildPosition()
     {
-        return transform.position + new Vector3(0f, 2f, 0f);
+        Bounds bounds = GetComponent<Renderer>().bounds;
+        return bounds.center + new Vector3(0f, bounds.extents.y / 2, 0f);
     }
 
     void OnMouseDown()
@@ -47,7 +48,10 @@ public class Node : MonoBehaviour
         }
 
         PlayerStats.Money -= blueprint.cost;
-        turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity).GetComponent<Turret>();
+
+        Transform blueprintTransform = blueprint.prefab.transform;
+        Vector3 distanceToRoot = blueprintTransform.position - blueprintTransform.Find("ROOT").position;
+        turret = Instantiate(blueprint.prefab, GetBuildPosition() + distanceToRoot, Quaternion.identity).GetComponent<Turret>();
         turretBlueprint = blueprint;
 
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
