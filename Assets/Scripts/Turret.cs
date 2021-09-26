@@ -3,7 +3,13 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public bool isUpgraded = false;
+    [HideInInspector]
     private Enemy target;
+
+    [HideInInspector]
+    public TurretBlueprint blueprint;
+    public int cost { get { return blueprint.cost; } }
+    public int upgradeCost { get { return blueprint.upgradeCost; } }
 
     [Header("General")]
 
@@ -147,6 +153,24 @@ public class Turret : MonoBehaviour
         bullet.Seek(target);
 
         GetComponent<AudioSource>().PlayOneShot(shootingClip);
+    }
+
+    public void getSelected()
+    {
+        // TODO make turret blink
+    }
+
+    public void getDeselected()
+    {
+        // TODO stop turret from blinking
+    }
+
+    public int GetSellAmount()
+    {
+        if (isUpgraded)
+            return (cost + upgradeCost) / 2;
+
+        return cost / 2;
     }
 
     // TODO show radius when clicking e.g. with 

@@ -8,8 +8,6 @@ public class Node : MonoBehaviour
     public Color cantBuildColor;
 
     public Turret turret;
-    public TurretBlueprint turretBlueprint;
-    public bool isUpgraded = false;
 
     private Renderer rend;
 
@@ -32,7 +30,7 @@ public class Node : MonoBehaviour
     void OnMouseDown()
     {
         if (turret)
-            buildManager.SelectNode(this);
+            buildManager.SelectTurret(turret);
         else if (buildManager.aboutToBuild)
             BuildTurret(buildManager.GetTurretToBuild());
 
@@ -52,7 +50,7 @@ public class Node : MonoBehaviour
         Transform blueprintTransform = blueprint.prefab.transform;
         Vector3 distanceToRoot = blueprintTransform.position - blueprintTransform.Find("ROOT").position;
         turret = Instantiate(blueprint.prefab, GetBuildPosition() + distanceToRoot, Quaternion.identity).GetComponent<Turret>();
-        turretBlueprint = blueprint;
+        turret.blueprint = blueprint;
 
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
@@ -61,32 +59,6 @@ public class Node : MonoBehaviour
         // TODO remove tower blueprint in hand
     }
 
-    // TODO deligate upgrading to tower, not node
-    public void UpgradeTurret()
-    {
-        if (PlayerStats.Money < turretBlueprint.upgradeCost)
-        {
-            Debug.Log("Not enough money to upgrade that!");
-            // TODO inform user of it
-            return;
-        }
-
-        PlayerStats.Money -= turretBlueprint.upgradeCost;
-
-        turret.Upgrade();
-    }
-
-    public void SellTurret()
-    {
-        // TODO SellAmount must come from turret, not the blueprint
-        PlayerStats.Money += turretBlueprint.GetSellAmount();
-
-        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        Destroy(turret.gameObject);
-        turretBlueprint = null;
-    }
 
     bool canBuildOn()
     {

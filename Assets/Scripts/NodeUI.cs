@@ -10,17 +10,15 @@ public class NodeUI : MonoBehaviour
 
     public Text sellAmount;
 
-    private Node target;
+    private Turret turret { get { return BuildManager.instance.selectedTurret; } }
 
-    public void ShowOn(Node node)
+    public void Show()
     {
-        target = node;
+        transform.position = turret.transform.position;
 
-        transform.position = target.GetBuildPosition();
-
-        if (!target.turret.isUpgraded)
+        if (!turret.isUpgraded)
         {
-            upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
+            upgradeCost.text = "$" + turret.upgradeCost;
             upgradeButton.interactable = true;
         }
         else
@@ -29,7 +27,7 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
 
-        sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
+        sellAmount.text = "$" + turret.GetSellAmount();
 
         ui.SetActive(true);
     }
@@ -41,14 +39,30 @@ public class NodeUI : MonoBehaviour
 
     public void Upgrade()
     {
-        target.UpgradeTurret();
-        BuildManager.instance.DeselectNode();
+        if (PlayerStats.Money < turret.upgradeCost)
+        {
+            Debug.Log("Not enough money to upgrade that!");
+            // TODO inform user of it
+            return;
+        }
+
+        PlayerStats.Money -= turret.upgradeCost;
+
+        turret.Upgrade();
+
+        BuildManager.instance.DeselectTurret();
     }
 
     public void Sell()
     {
-        target.SellTurret();
-        BuildManager.instance.DeselectNode();
+        PlayerStats.Money += turret.GetSellAmount();
+
+        GameObject effect = (GameObject)Instantiate(BuildManager.instance.sellEffect, turret.transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(turret.gameObject);
+
+        BuildManager.instance.DeselectTurret();
     }
 
 }
