@@ -27,11 +27,7 @@ public class BuildManager : MonoBehaviour
 
     public void SelectTurret(Turret turret)
     {
-        if (selectedTurret == turret)
-        {
-            DeselectTurret();
-            return;
-        }
+        DeselectTurret();
 
         selectedTurret = turret;
         turretToBuild = null;

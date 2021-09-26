@@ -37,7 +37,11 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
         transform.Find("Hat").gameObject.SetActive(false);
+
+        GetComponent<Outline>().enabled = false;
+
         if (useLaser)
             GetComponent<AudioSource>().loop = true;
     }
@@ -155,14 +159,19 @@ public class Turret : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(shootingClip);
     }
 
+    void OnMouseDown()
+    {
+        BuildManager.instance.SelectTurret(this);
+    }
+
     public void getSelected()
     {
-        // TODO make turret blink
+        GetComponent<Outline>().enabled = true;
     }
 
     public void getDeselected()
     {
-        // TODO stop turret from blinking
+        GetComponent<Outline>().enabled = false;
     }
 
     public int GetSellAmount()

@@ -33,7 +33,7 @@ public class Node : MonoBehaviour
             buildManager.SelectTurret(turret);
         else if (buildManager.aboutToBuild)
             BuildTurret(buildManager.GetTurretToBuild());
-
+        // TODO deselect otherwise, but do actions with node ui
     }
 
     void BuildTurret(TurretBlueprint blueprint)
