@@ -38,10 +38,6 @@ public class Turret : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
-        transform.Find("Hat").gameObject.SetActive(false);
-
-        GetComponent<Outline>().enabled = false;
-
         if (useLaser)
             GetComponent<AudioSource>().loop = true;
     }

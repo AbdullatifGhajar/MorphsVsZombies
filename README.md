@@ -6,5 +6,5 @@
 - add starting/ending sound
 - update main menu
 - display name of turrets
-- display turret blueprint in hand
 - display feedback when no money
+- stop buying e.g. by clicking right mouse button
