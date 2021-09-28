@@ -1,9 +1,10 @@
 using UnityEngine;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static bool GameIsOver;
+
+    public static int Level = 1;
 
     public GameObject gameOverUI;
     public GameObject completeLevelUI;
