@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour
     public GameObject sellEffect;
 
     public AudioClip buyClip;
+    public AudioClip noMoneyClip;
 
     [HideInInspector]
     public Turret turretToBuild;
@@ -56,7 +57,8 @@ public class BuildManager : MonoBehaviour
         if (PlayerStats.Money < turret.cost)
         {
             Debug.Log("Not enough money to build that!");
-            // TODO inform user of it
+            GameObject.Find("Money").GetComponent<Shaking>().Shake();
+            GetComponent<AudioSource>().PlayOneShot(noMoneyClip);
             return;
         }
         DeselectTurret();
@@ -82,7 +84,7 @@ public class BuildManager : MonoBehaviour
         turretToBuild = null;
 
         GetComponent<AudioSource>().PlayOneShot(buyClip);
-        
+
         Debug.Log("Turret build!");
     }
 

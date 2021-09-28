@@ -36,19 +36,14 @@ public class Node : MonoBehaviour
         // TODO deselect otherwise, but do actions with node ui
     }
 
-    bool canBuildOn()
-    {
-        return !turret && buildManager.HasMoney;
-    }
-
     void OnMouseEnter()
     {
-        if (buildManager.aboutToBuild && canBuildOn()){
+        if (buildManager.aboutToBuild && !turret){
             rend.material.color = canBuildColor;
             buildManager.turretToBuild.transform.position = GetBuildPosition() + new Vector3(0f, 3f, 0f);
         }
 
-        else if (buildManager.aboutToBuild && !canBuildOn())
+        else if (buildManager.aboutToBuild && turret)
             rend.material.color = cantBuildColor;
 
         else // just hovering
