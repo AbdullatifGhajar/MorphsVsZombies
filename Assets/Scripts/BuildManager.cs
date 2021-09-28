@@ -17,7 +17,11 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
     public GameObject sellEffect;
 
+    public AudioClip buyClip;
+
+    [HideInInspector]
     public Turret turretToBuild;
+    [HideInInspector]
     public Turret selectedTurret;
 
     public NodeUI nodeUI;
@@ -76,6 +80,9 @@ public class BuildManager : MonoBehaviour
 
         node.turret = turretToBuild;
         turretToBuild = null;
+
+        GetComponent<AudioSource>().PlayOneShot(buyClip);
+        
         Debug.Log("Turret build!");
     }
 
