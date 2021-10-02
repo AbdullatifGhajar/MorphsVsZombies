@@ -42,6 +42,18 @@ public class BuildManager : MonoBehaviour
         turret.getSelected();
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+            Reset();
+    }
+
+    public void Reset()
+    {
+        UnbuyTurret();
+        DeselectTurret();
+    }
+
     public void DeselectTurret()
     {
         if (!selectedTurret)
@@ -88,9 +100,14 @@ public class BuildManager : MonoBehaviour
         Debug.Log("Turret build!");
     }
 
-    public void RemovePreview()
+    public void UnbuyTurret()
     {
-        Destroy(turretToBuild);
+        if (turretToBuild)
+        {
+            PlayerStats.Money += turretToBuild.cost;
+            Destroy(turretToBuild.gameObject);
+            turretToBuild = null;
+        }
     }
 
 }

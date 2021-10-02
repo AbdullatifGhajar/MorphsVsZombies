@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -29,16 +30,21 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (turret)
             buildManager.SelectTurret(turret);
         else if (buildManager.aboutToBuild)
             buildManager.BuildTurretOn(this);
-        // TODO deselect otherwise, but do actions with node ui
+        else
+            buildManager.Reset();
     }
 
     void OnMouseEnter()
     {
-        if (buildManager.aboutToBuild && !turret){
+        if (buildManager.aboutToBuild && !turret)
+        {
             rend.material.color = canBuildColor;
             buildManager.turretToBuild.transform.position = GetBuildPosition() + new Vector3(0f, 3f, 0f);
         }
