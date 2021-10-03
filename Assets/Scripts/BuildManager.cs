@@ -25,10 +25,15 @@ public class BuildManager : MonoBehaviour
     [HideInInspector]
     public Turret selectedTurret;
 
-    public NodeUI nodeUI;
+    private NodeUI nodeUI;
 
     public bool aboutToBuild { get { return turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+
+    void Start()
+    {
+        nodeUI = GameObject.Find("NodeUI").GetComponent<NodeUI>();
+    }
 
     public void SelectTurret(Turret turret)
     {

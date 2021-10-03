@@ -27,7 +27,7 @@ public class Turret : MonoBehaviour
     public float slowAmount = .5f;
 
     public AudioClip laserClip;
-    public LineRenderer lineRenderer;
+    private LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
 
@@ -39,7 +39,10 @@ public class Turret : MonoBehaviour
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
         if (useLaser)
+        {
             GetComponent<AudioSource>().loop = true;
+            lineRenderer = GetComponent<LineRenderer>();
+        }
     }
 
     public void Upgrade()

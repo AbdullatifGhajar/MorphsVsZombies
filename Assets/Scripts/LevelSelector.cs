@@ -3,14 +3,15 @@ using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
-    public SceneFader fader;
+    public SceneFader sceneFader;
 
     public Button[] levelButtons;
 
     void Start()
     {
-        int levelReached = PlayerPrefs.GetInt("levelReached", 0);
+        sceneFader = GameObject.Find("SceneFader").GetComponent<SceneFader>();
 
+        int levelReached = GameManager.Level;
         for (int i = 0; i < levelButtons.Length; i++)
         {
             if (i + 1 > levelReached)
@@ -20,7 +21,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select(string levelName)
     {
-        fader.FadeTo(levelName);
+        sceneFader.FadeTo(levelName);
     }
 
 }

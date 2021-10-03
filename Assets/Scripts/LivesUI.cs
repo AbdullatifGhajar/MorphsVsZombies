@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class LivesUI : MonoBehaviour
 {
-    public Text livesText;
+    private Text livesText;
+
+    void Start()
+    {
+        livesText = GetComponent<Text>();   
+    }
 
     void Update()
     {

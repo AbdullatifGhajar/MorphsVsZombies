@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class CompleteLevel : MonoBehaviour
 {
-    public string menuSceneName = "MainMenu";
+    private SceneFader sceneFader;
 
-    // TODO save level in GameManager and don't hardcode it
-    public string nextLevel = "Level02";
-    public int levelToUnlock = 2;
-
-    public SceneFader sceneFader;
+    void Start()
+    {
+        sceneFader = GameObject.Find("SceneFader").GetComponent<SceneFader>();
+    }
 
     public void Continue()
     {
-        PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo(nextLevel);
+        GameManager.Level += 1;
+        sceneFader.FadeTo("Level" + GameManager.Level);
     }
 
     public void Menu()
     {
-        sceneFader.FadeTo(menuSceneName);
+        sceneFader.FadeTo("MainMenu");
     }
 
 }

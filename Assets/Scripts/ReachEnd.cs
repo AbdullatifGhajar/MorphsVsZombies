@@ -3,7 +3,12 @@ using UnityEngine;
 public class ReachEnd : MonoBehaviour
 {
 
-    public SceneFader sceneFader;
+    private SceneFader sceneFader;
+
+    void Start()
+    {
+        sceneFader = GameObject.Find("SceneFader").GetComponent<SceneFader>();
+    }
 
     public void Quit()
     {

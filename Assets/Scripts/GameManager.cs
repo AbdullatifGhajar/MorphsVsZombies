@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverUI;
     public GameObject completeLevelUI;
+    public GameObject reachEndUI;
 
     void Start()
     {

@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class LevelUI : MonoBehaviour
 {
-    public Text levelText;
+    private Text levelText;
+
+    void Start()
+    {
+        levelText = GetComponent<Text>();
+    }
 
     void Update()
     {

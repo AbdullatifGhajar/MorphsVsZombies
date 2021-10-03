@@ -3,11 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject ui;
+    public GameObject UI;
 
-    public string menuSceneName = "MainMenu";
+    private SceneFader sceneFader;
 
-    public SceneFader sceneFader;
+    void Start()
+    {
+        sceneFader = GameObject.Find("SceneFader").GetComponent<SceneFader>();
+    }
 
     void Update()
     {
@@ -18,7 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Toggle()
     {
-        if (ui.activeSelf)
+        if (UI.activeSelf)
             Hide();
         else
             Show();
@@ -26,12 +29,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Show()
     {
-        ui.SetActive(true);
+        UI.SetActive(true);
         Time.timeScale = 0f;
     }
     public void Hide()
     {
-        ui.SetActive(false);
+        UI.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -44,7 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void Menu()
     {
         Hide();
-        sceneFader.FadeTo(menuSceneName);
+        sceneFader.FadeTo("MainMenu");
     }
 
 }

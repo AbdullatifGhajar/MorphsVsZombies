@@ -26,7 +26,6 @@ public class RoundsSurvived : MonoBehaviour
 
             yield return new WaitForSeconds(.05f);
         }
-
     }
 
 }

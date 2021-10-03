@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class MoneyUI : MonoBehaviour
 {
-    public Text moneyText;
+    private Text moneyText;
+
+    void Start()
+    {
+        moneyText = GetComponent<Text>();   
+    }
 
     void Update()
     {
