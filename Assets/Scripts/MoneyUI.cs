@@ -7,7 +7,7 @@ public class MoneyUI : MonoBehaviour
 
     void Start()
     {
-        moneyText = GetComponent<Text>();   
+        moneyText = GetComponent<Text>();
     }
 
     void Update()

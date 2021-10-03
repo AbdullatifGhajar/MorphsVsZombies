@@ -44,7 +44,7 @@ public class WaveSpawner : MonoBehaviour
         Wave wave = waves[waveIndex];
 
         GetComponent<AudioSource>().PlayOneShot(wave.sound);
-        
+
         EnemiesAlive = wave.count;
         for (int i = 0; i < wave.count; i++)
         {

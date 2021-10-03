@@ -7,7 +7,7 @@ public class LivesUI : MonoBehaviour
 
     void Start()
     {
-        livesText = GetComponent<Text>();   
+        livesText = GetComponent<Text>();
     }
 
     void Update()
