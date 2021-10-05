@@ -18,13 +18,24 @@ public class SceneFader : MonoBehaviour
         StartCoroutine(FadeOut(scene));
     }
 
+    public void Reload()
+    {
+        FadeTo(SceneManager.GetActiveScene().name);
+    }
+
+    public void FadeToNextLevel()
+    {
+        GameManager.Level += 1;
+        FadeTo("Level" + GameManager.Level);
+    }
+
     IEnumerator FadeIn()
     {
         float t = 1f;
 
         while (t > 0f)
         {
-            t -= Time.deltaTime;
+            t -= Time.unscaledDeltaTime;
             float a = curve.Evaluate(t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
@@ -37,7 +48,7 @@ public class SceneFader : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float a = curve.Evaluate(t);
             image.color = new Color(0f, 0f, 0f, a);
             yield return 0;
