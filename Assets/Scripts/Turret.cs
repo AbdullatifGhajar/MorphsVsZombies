@@ -47,7 +47,9 @@ public class Turret : MonoBehaviour
     public void Upgrade()
     {
         transform.Find("Hat").gameObject.SetActive(true);
-        // TODO upgrade values
+        
+        fireRate *= 1.5f;
+
         isUpgraded = true;
         Debug.Log("Turret upgraded!");
     }
@@ -177,11 +179,4 @@ public class Turret : MonoBehaviour
 
         return cost / 2;
     }
-
-    // TODO show radius when clicking e.g. with 
-    // void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(transform.position, range);
-    // }
 }
