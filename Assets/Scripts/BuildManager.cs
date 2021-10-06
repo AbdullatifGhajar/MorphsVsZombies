@@ -73,9 +73,7 @@ public class BuildManager : MonoBehaviour
     {
         if (PlayerStats.Money < turret.cost)
         {
-            Debug.Log("Not enough money to build that!");
-            GameObject.Find("Money").GetComponent<Shaking>().Shake();
-            GetComponent<AudioSource>().PlayOneShot(noMoneyClip);
+            NoMoneyFeedback();
             return;
         }
         DeselectTurret();
@@ -113,6 +111,13 @@ public class BuildManager : MonoBehaviour
             Destroy(turretToBuild.gameObject);
             turretToBuild = null;
         }
+    }
+
+    public void NoMoneyFeedback()
+    {
+        Debug.Log("Not enough money to build that!");
+        GameObject.Find("Money").GetComponent<Shaking>().Shake();
+        GetComponent<AudioSource>().PlayOneShot(noMoneyClip);
     }
 
 }

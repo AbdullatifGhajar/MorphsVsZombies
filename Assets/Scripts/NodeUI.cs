@@ -42,7 +42,7 @@ public class NodeUI : MonoBehaviour
         if (PlayerStats.Money < turret.upgradeCost)
         {
             Debug.Log("Not enough money to upgrade that!");
-            // TODO inform user of it
+            BuildManager.instance.NoMoneyFeedback();
             return;
         }
 
