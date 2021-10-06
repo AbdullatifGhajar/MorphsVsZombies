@@ -29,7 +29,6 @@ public class Turret : MonoBehaviour
     public AudioClip laserClip;
     private LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public Light impactLight;
 
     [Header("Unity Setup Fields")]
     public float turnSpeed = 10f;
@@ -89,7 +88,6 @@ public class Turret : MonoBehaviour
                 {
                     lineRenderer.enabled = false;
                     impactEffect.Stop();
-                    impactLight.enabled = false;
 
                     GetComponent<AudioSource>().Stop();
                 }
@@ -134,7 +132,6 @@ public class Turret : MonoBehaviour
         {
             lineRenderer.enabled = true;
             impactEffect.Play();
-            impactLight.enabled = true;
 
             GetComponent<AudioSource>().clip = laserClip;
             GetComponent<AudioSource>().Play();
