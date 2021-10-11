@@ -1,6 +1,5 @@
 # TODO
 
-- Solve the problem with losing and winning
 - generate levels
 - add sounds for lives
 - add starting/ending sound
