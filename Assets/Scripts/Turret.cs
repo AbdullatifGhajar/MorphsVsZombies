@@ -6,7 +6,6 @@ public class Turret : MonoBehaviour
     [HideInInspector]
     private Enemy target;
 
-    [HideInInspector]
     public TurretBlueprint blueprint;
     public int cost { get { return blueprint.cost; } }
     public int upgradeCost { get { return blueprint.upgradeCost; } }
