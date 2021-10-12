@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
 
     [Header("Use Laser")]
     public bool useLaser = false;
-    public int damageOverTime = 30;
+    public float damageOverTime = 30f;
     public float slowAmount = .5f;
 
     public AudioClip laserClip;
@@ -48,6 +48,8 @@ public class Turret : MonoBehaviour
         transform.Find("Hat").gameObject.SetActive(true);
         
         fireRate *= 1.5f;
+        range *= 1.5f;
+        damageOverTime *= 1.5f;
 
         isUpgraded = true;
         Debug.Log("Turret upgraded!");
