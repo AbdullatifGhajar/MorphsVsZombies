@@ -5,6 +5,8 @@ using System.Collections;
 public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive;
+
+    public Transform spawningPoint;
     public Wave[] waves;
     public AudioClip[] audioClips;
     public float timeBetweenWaves = 5f;
@@ -19,6 +21,8 @@ public class WaveSpawner : MonoBehaviour
         EnemiesAlive = 0;
         waveIndex = 0;
         countdown = 2f;
+
+        spawningPoint = transform.Find("SpawningPoint").transform;
     }
 
     void Update()
@@ -62,7 +66,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, transform.position, transform.rotation);
+        Instantiate(enemy, spawningPoint.position, spawningPoint.rotation);
     }
 
 }
