@@ -1,12 +1,12 @@
 
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive;
     public Wave[] waves;
+    public AudioClip[] audioClips;
     public float timeBetweenWaves = 5f;
     private float countdown;
 
@@ -47,7 +47,8 @@ public class WaveSpawner : MonoBehaviour
         PlayerStats.Rounds++;
         Wave wave = waves[waveIndex];
 
-        GetComponent<AudioSource>().PlayOneShot(wave.sound);
+        AudioClip randomClip = audioClips[Random.Range(0, audioClips.Length)];
+        GetComponent<AudioSource>().PlayOneShot(randomClip);
 
         EnemiesAlive = wave.count;
         for (int i = 0; i < wave.count; i++)
