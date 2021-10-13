@@ -6,7 +6,6 @@
 - display name of turrets
 - add aniamation for reach end menu
 - show zombies path direction
-- open select level menu
 
 # Features
 

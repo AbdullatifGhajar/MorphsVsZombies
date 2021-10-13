@@ -4,12 +4,13 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Transform target;
-    private int wayPointIndex = 0;
+    private int wayPointIndex;
 
     private Enemy enemy;
 
     void Start()
     {
+        wayPointIndex = 0;
         enemy = GetComponent<Enemy>();
         target = WayPoints.points[0];
     }

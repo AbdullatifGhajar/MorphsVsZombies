@@ -26,9 +26,9 @@ public class SceneFader : MonoBehaviour
     public void FadeToNextLevel()
     {
         GameManager.Level += 1;
-        if(PlayerPrefs.GetInt("levelReached", 1) < GameManager.Level)
+        if (PlayerPrefs.GetInt("levelReached", 1) < GameManager.Level)
             PlayerPrefs.SetInt("levelReached", GameManager.Level);
-            
+
         FadeTo("Level" + GameManager.Level);
     }
 
