@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
     public void WinLevel()
     {
         GameIsOver = true;
-        completeLevelUI.SetActive(true);
+        if(Level == LevelSelector.LevelCount)
+            reachEndUI.SetActive(true);
+        else
+            completeLevelUI.SetActive(true);
     }
 
 }
