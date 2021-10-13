@@ -11,8 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        GameManager.Level = 1;
-        sceneFader.FadeTo("Level" + GameManager.Level);
+        sceneFader.FadeTo("LevelSelect");
     }
 
     public void Quit()

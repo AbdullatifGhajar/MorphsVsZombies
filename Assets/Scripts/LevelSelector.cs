@@ -3,25 +3,25 @@ using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
-    public SceneFader sceneFader;
+    public GameObject buttonPrefab;
 
-    public Button[] levelButtons;
+    public int levelCount;
 
     void Start()
     {
-        sceneFader = GameObject.Find("SceneFader").GetComponent<SceneFader>();
+        int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
-        int levelReached = GameManager.Level;
-        for (int i = 0; i < levelButtons.Length; i++)
+        for (int i = 1; i <= levelCount; i++)
         {
-            if (i + 1 > levelReached)
-                levelButtons[i].interactable = false;
+            GameObject buttonGO = Instantiate(buttonPrefab);
+            buttonGO.transform.SetParent(transform);
+
+            Text text = buttonGO.transform.Find("Text").GetComponent<Text>();
+            text.text = i.ToString();
+
+            Button button = buttonGO.GetComponent<Button>();
+            if (i > levelReached)
+                button.interactable = false;
         }
     }
-
-    public void Select(string levelName)
-    {
-        sceneFader.FadeTo(levelName);
-    }
-
 }
