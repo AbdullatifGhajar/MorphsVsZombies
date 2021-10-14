@@ -6,14 +6,14 @@ public class LevelSelector : MonoBehaviour
 {
     public GameObject buttonPrefab;
 
-    public static int LevelCount;
+    public static int LevelCount = 6;
 
     void Start()
     {
-        string AssetsFolderPath = Application.dataPath;
-        string levelFolder = AssetsFolderPath + "/Levels";
-        DirectoryInfo dir = new DirectoryInfo(levelFolder);
-        LevelCount = dir.GetFiles("*.unity").Length;
+        // string AssetsFolderPath = Application.dataPath;
+        // string levelFolder = AssetsFolderPath + "/Levels";
+        // DirectoryInfo dir = new DirectoryInfo(levelFolder);
+        // LevelCount = dir.GetFiles("*.unity").Length;
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 

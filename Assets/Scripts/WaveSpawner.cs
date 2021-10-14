@@ -20,7 +20,7 @@ public class WaveSpawner : MonoBehaviour
     {
         EnemiesAlive = 0;
         waveIndex = 0;
-        countdown = 2f;
+        countdown = 5f;
 
         spawningPoint = transform.Find("SpawningPoint").transform;
     }

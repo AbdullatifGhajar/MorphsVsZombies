@@ -2,7 +2,6 @@
 
 - add sounds for lives
 - add starting/ending sound
-- add aniamation for reach end menu
 
 # Features
 
