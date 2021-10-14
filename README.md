@@ -1,11 +1,9 @@
 # TODO
 
-- generate levels
 - add sounds for lives
 - add starting/ending sound
-- display name of turrets
 - add aniamation for reach end menu
-- show zombies path direction
+- fix position of sprite in introduction
 
 # Features
 

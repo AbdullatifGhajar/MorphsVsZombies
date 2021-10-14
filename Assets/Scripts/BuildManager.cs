@@ -71,6 +71,9 @@ public class BuildManager : MonoBehaviour
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
+        if(turretToBuild)
+            UnbuyTurret();
+
         if (PlayerStats.Money < turret.cost)
         {
             NoMoneyFeedback();
@@ -80,7 +83,7 @@ public class BuildManager : MonoBehaviour
 
         PlayerStats.Money -= turret.cost;
 
-        turretToBuild = Instantiate(turret.prefab, transform.position, Quaternion.identity).GetComponent<Turret>();
+        turretToBuild = Instantiate(turret.prefab, new Vector3(0f, -10, 0f), Quaternion.identity).GetComponent<Turret>();
         turretToBuild.blueprint = turret;
         turretToBuild.enabled = false;
     }
