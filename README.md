@@ -2,6 +2,8 @@
 
 - add sounds for lives
 - add starting/ending sound
+- add upgrade sound
+- add sell sound
 
 # Features
 

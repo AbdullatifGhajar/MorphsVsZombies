@@ -11,17 +11,18 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject reachEndUI;
     public GameObject introduction;
+    public bool useIntroduction = true;
 
     void Start()
     {
         GameIsOver = false;
-        if (introduction)
+        if (useIntroduction)
             introduction.SetActive(true);
     }
 
     bool NoOverlay()
     {
-        return !pauseMenuUI.activeSelf && !reachEndUI.activeSelf && !completeLevelUI.activeSelf && !gameOverUI.activeSelf && !introduction.activeSelf;
+        return !pauseMenuUI.activeSelf && !completeLevelUI.activeSelf && !gameOverUI.activeSelf && !introduction.activeSelf;
     }
 
     void Update()
@@ -46,7 +47,10 @@ public class GameManager : MonoBehaviour
     {
         GameIsOver = true;
         if(Level == LevelSelector.LevelCount)
+        {
             reachEndUI.SetActive(true);
+            enabled = false;
+        }
         else
             completeLevelUI.SetActive(true);
     }
